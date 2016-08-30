@@ -1,14 +1,14 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <ProjectGuid>{DABEF7D9-D889-4A40-A4B5-F386C8384304}</ProjectGuid>
-        <ProjectVersion>18.1</ProjectVersion>
-        <MainSource>dUnitXTest.dpr</MainSource>
+        <ProjectGuid>{E95F614F-A30E-4799-B39E-4F6154A60EE9}</ProjectGuid>
+        <MainSource>ZXingXE8.dpk</MainSource>
+        <ProjectVersion>17.2</ProjectVersion>
+        <FrameworkType>None</FrameworkType>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
-        <Platform Condition="'$(Platform)'==''">Win32</Platform>
+        <Platform Condition="'$(Platform)'==''">Win64</Platform>
         <TargetedPlatforms>3</TargetedPlatforms>
-        <AppType>Console</AppType>
-        <FrameworkType>FMX</FrameworkType>
+        <AppType>Package</AppType>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
         <Base>true</Base>
@@ -33,11 +33,6 @@
         <CfgParent>Base</CfgParent>
         <Base>true</Base>
     </PropertyGroup>
-    <PropertyGroup Condition="('$(Platform)'=='OSX32' and '$(Base)'=='true') or '$(Base_OSX32)'!=''">
-        <Base_OSX32>true</Base_OSX32>
-        <CfgParent>Base</CfgParent>
-        <Base>true</Base>
-    </PropertyGroup>
     <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
         <Base_Win32>true</Base_Win32>
         <CfgParent>Base</CfgParent>
@@ -59,6 +54,12 @@
         <Cfg_1>true</Cfg_1>
         <Base>true</Base>
     </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Cfg_1)'=='true') or '$(Cfg_1_Win64)'!=''">
+        <Cfg_1_Win64>true</Cfg_1_Win64>
+        <CfgParent>Cfg_1</CfgParent>
+        <Cfg_1>true</Cfg_1>
+        <Base>true</Base>
+    </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
         <Cfg_2>true</Cfg_2>
         <CfgParent>Base</CfgParent>
@@ -70,15 +71,25 @@
         <Cfg_2>true</Cfg_2>
         <Base>true</Base>
     </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Cfg_2)'=='true') or '$(Cfg_2_Win64)'!=''">
+        <Cfg_2_Win64>true</Cfg_2_Win64>
+        <CfgParent>Cfg_2</CfgParent>
+        <Cfg_2>true</Cfg_2>
+        <Base>true</Base>
+    </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
-        <Manifest_File>None</Manifest_File>
-        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.1.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
-        <VerInfo_Locale>1043</VerInfo_Locale>
-        <Icns_MainIcns>$(BDS)\bin\delphi_PROJECTICNS.icns</Icns_MainIcns>
+        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_Locale>1040</VerInfo_Locale>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;$(DCC_Namespace)</DCC_Namespace>
-        <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
-        <SanitizedProjectName>dUnitXTest</SanitizedProjectName>
-        <DCC_UnitSearchPath>$(DUnitX);$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_NO_RETVAL>error</DCC_NO_RETVAL>
+        <DCC_FOR_LOOP_VAR_UNDEF>error</DCC_FOR_LOOP_VAR_UNDEF>
+        <SanitizedProjectName>ZXingXE8</SanitizedProjectName>
+        <RuntimeOnlyPackage>true</RuntimeOnlyPackage>
+        <GenPackage>true</GenPackage>
+        <DCC_UnitSearchPath>.\$(Platform)\$(Config);$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_CONSTRUCTING_ABSTRACT>error</DCC_CONSTRUCTING_ABSTRACT>
+        <GenDll>true</GenDll>
+        <DCC_IMPLICIT_IMPORT>error</DCC_IMPLICIT_IMPORT>
         <DCC_DcuOutput>.\$(Platform)\$(Config)</DCC_DcuOutput>
         <DCC_ExeOutput>.\$(Platform)\$(Config)</DCC_ExeOutput>
         <DCC_E>false</DCC_E>
@@ -89,114 +100,50 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Android)'!=''">
         <EnabledSysJars>android-support-v4.dex.jar;apk-expansion.dex.jar;cloud-messaging.dex.jar;fmx.dex.jar;google-analytics-v2.dex.jar;google-play-billing.dex.jar;google-play-licensing.dex.jar;google-play-services.dex.jar</EnabledSysJars>
-        <Android_LauncherIcon144>$(BDS)\bin\Artwork\Android\FM_LauncherIcon_144x144.png</Android_LauncherIcon144>
-        <AUP_CAMERA>true</AUP_CAMERA>
-        <AUP_INTERNET>true</AUP_INTERNET>
-        <Android_LauncherIcon48>$(BDS)\bin\Artwork\Android\FM_LauncherIcon_48x48.png</Android_LauncherIcon48>
-        <Android_LauncherIcon96>$(BDS)\bin\Artwork\Android\FM_LauncherIcon_96x96.png</Android_LauncherIcon96>
-        <Android_SplashImage640>$(BDS)\bin\Artwork\Android\FM_SplashImage_640x480.png</Android_SplashImage640>
-        <Android_SplashImage426>$(BDS)\bin\Artwork\Android\FM_SplashImage_426x320.png</Android_SplashImage426>
-        <AUP_ACCESS_FINE_LOCATION>true</AUP_ACCESS_FINE_LOCATION>
-        <AUP_READ_PHONE_STATE>true</AUP_READ_PHONE_STATE>
-        <AUP_CALL_PHONE>true</AUP_CALL_PHONE>
-        <BT_BuildType>Debug</BT_BuildType>
-        <AUP_READ_CALENDAR>true</AUP_READ_CALENDAR>
-        <AUP_WRITE_CALENDAR>true</AUP_WRITE_CALENDAR>
-        <Android_LauncherIcon72>$(BDS)\bin\Artwork\Android\FM_LauncherIcon_72x72.png</Android_LauncherIcon72>
-        <AUP_ACCESS_COARSE_LOCATION>true</AUP_ACCESS_COARSE_LOCATION>
-        <AUP_WRITE_EXTERNAL_STORAGE>true</AUP_WRITE_EXTERNAL_STORAGE>
-        <VerInfo_Keys>package=com.embarcadero.$(MSBuildProjectName);label=$(MSBuildProjectName);versionCode=1;versionName=1.0.0;persistent=False;restoreAnyVersion=False;installLocation=auto;largeHeap=False;theme=TitleBar;hardwareAccelerated=true;apiKey=</VerInfo_Keys>
-        <AUP_READ_EXTERNAL_STORAGE>true</AUP_READ_EXTERNAL_STORAGE>
-        <Android_SplashImage960>$(BDS)\bin\Artwork\Android\FM_SplashImage_960x720.png</Android_SplashImage960>
-        <Android_SplashImage470>$(BDS)\bin\Artwork\Android\FM_SplashImage_470x320.png</Android_SplashImage470>
-        <Android_LauncherIcon36>$(BDS)\bin\Artwork\Android\FM_LauncherIcon_36x36.png</Android_LauncherIcon36>
+        <DCC_CBuilderOutput>None</DCC_CBuilderOutput>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_iOSDevice32)'!=''">
-        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <iPad_AppIcon76>$(BDS)\bin\Artwork\iOS\iPad\FM_ApplicationIcon_76x76.png</iPad_AppIcon76>
-        <iPad_SpotLight80>$(BDS)\bin\Artwork\iOS\iPad\FM_SpotlightSearchIcon_80x80.png</iPad_SpotLight80>
-        <iPad_SpotLight40>$(BDS)\bin\Artwork\iOS\iPad\FM_SpotlightSearchIcon_40x40.png</iPad_SpotLight40>
-        <iPhone_Spotlight40>$(BDS)\bin\Artwork\iOS\iPhone\FM_SpotlightSearchIcon_40x40.png</iPhone_Spotlight40>
-        <iPad_AppIcon152>$(BDS)\bin\Artwork\iOS\iPad\FM_ApplicationIcon_152x152.png</iPad_AppIcon152>
-        <iPhone_AppIcon60>$(BDS)\bin\Artwork\iOS\iPhone\FM_ApplicationIcon_60x60.png</iPhone_AppIcon60>
-        <VerInfo_UIDeviceFamily>iPhoneAndiPad</VerInfo_UIDeviceFamily>
-        <iPad_Launch2048x1536>$(BDS)\bin\Artwork\iOS\iPad\FM_LaunchImageLandscape_2048x1536.png</iPad_Launch2048x1536>
-        <iPhone_Spotlight80>$(BDS)\bin\Artwork\iOS\iPhone\FM_SpotlightSearchIcon_80x80.png</iPhone_Spotlight80>
-        <VerInfo_Keys>CFBundleName=$(MSBuildProjectName);CFBundleDevelopmentRegion=en;CFBundleDisplayName=$(MSBuildProjectName);CFBundleIdentifier=$(MSBuildProjectName);CFBundleInfoDictionaryVersion=7.1;CFBundleVersion=1.0.0.0;CFBundlePackageType=APPL;CFBundleSignature=????;LSRequiresIPhoneOS=true;CFBundleAllowMixedLocalizations=YES;CFBundleExecutable=$(MSBuildProjectName);UIDeviceFamily=iPhone &amp; iPad;CFBundleResourceSpecification=ResourceRules.plist;NSLocationAlwaysUsageDescription=The reason for accessing the location information of the user;NSLocationWhenInUseUsageDescription=The reason for accessing the location information of the user;FMLocalNotificationPermission=false;UIBackgroundModes=</VerInfo_Keys>
-        <iPad_Launch1024x768>$(BDS)\bin\Artwork\iOS\iPad\FM_LaunchImageLandscape_1024x768.png</iPad_Launch1024x768>
-        <BT_BuildType>Debug</BT_BuildType>
-        <iPad_Launch1536x2048>$(BDS)\bin\Artwork\iOS\iPad\FM_LaunchImagePortrait_1536x2048.png</iPad_Launch1536x2048>
-        <VerInfo_BundleId>$(MSBuildProjectName)</VerInfo_BundleId>
-        <iPhone_AppIcon120>$(BDS)\bin\Artwork\iOS\iPhone\FM_ApplicationIcon_120x120.png</iPhone_AppIcon120>
-        <iPad_Launch768x1024>$(BDS)\bin\Artwork\iOS\iPad\FM_LaunchImagePortrait_768x1024.png</iPad_Launch768x1024>
+        <DCC_CBuilderOutput>None</DCC_CBuilderOutput>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_iOSDevice64)'!=''">
-        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <iPad_AppIcon76>$(BDS)\bin\Artwork\iOS\iPad\FM_ApplicationIcon_76x76.png</iPad_AppIcon76>
-        <iPad_SpotLight80>$(BDS)\bin\Artwork\iOS\iPad\FM_SpotlightSearchIcon_80x80.png</iPad_SpotLight80>
-        <iPad_SpotLight40>$(BDS)\bin\Artwork\iOS\iPad\FM_SpotlightSearchIcon_40x40.png</iPad_SpotLight40>
-        <iPhone_Spotlight40>$(BDS)\bin\Artwork\iOS\iPhone\FM_SpotlightSearchIcon_40x40.png</iPhone_Spotlight40>
-        <iPad_AppIcon152>$(BDS)\bin\Artwork\iOS\iPad\FM_ApplicationIcon_152x152.png</iPad_AppIcon152>
-        <iPhone_AppIcon60>$(BDS)\bin\Artwork\iOS\iPhone\FM_ApplicationIcon_60x60.png</iPhone_AppIcon60>
-        <VerInfo_UIDeviceFamily>iPhoneAndiPad</VerInfo_UIDeviceFamily>
-        <iPad_Launch2048x1536>$(BDS)\bin\Artwork\iOS\iPad\FM_LaunchImageLandscape_2048x1536.png</iPad_Launch2048x1536>
-        <iPhone_Spotlight80>$(BDS)\bin\Artwork\iOS\iPhone\FM_SpotlightSearchIcon_80x80.png</iPhone_Spotlight80>
-        <VerInfo_Keys>CFBundleName=$(MSBuildProjectName);CFBundleDevelopmentRegion=en;CFBundleDisplayName=$(MSBuildProjectName);CFBundleIdentifier=$(MSBuildProjectName);CFBundleInfoDictionaryVersion=7.1;CFBundleVersion=1.0.0.0;CFBundlePackageType=APPL;CFBundleSignature=????;LSRequiresIPhoneOS=true;CFBundleAllowMixedLocalizations=YES;CFBundleExecutable=$(MSBuildProjectName);UIDeviceFamily=iPhone &amp; iPad;CFBundleResourceSpecification=ResourceRules.plist;NSLocationAlwaysUsageDescription=The reason for accessing the location information of the user;NSLocationWhenInUseUsageDescription=The reason for accessing the location information of the user;FMLocalNotificationPermission=false;UIBackgroundModes=</VerInfo_Keys>
-        <iPad_Launch1024x768>$(BDS)\bin\Artwork\iOS\iPad\FM_LaunchImageLandscape_1024x768.png</iPad_Launch1024x768>
-        <BT_BuildType>Debug</BT_BuildType>
-        <iPad_Launch1536x2048>$(BDS)\bin\Artwork\iOS\iPad\FM_LaunchImagePortrait_1536x2048.png</iPad_Launch1536x2048>
-        <VerInfo_BundleId>$(MSBuildProjectName)</VerInfo_BundleId>
-        <iPhone_AppIcon120>$(BDS)\bin\Artwork\iOS\iPhone\FM_ApplicationIcon_120x120.png</iPhone_AppIcon120>
-        <iPad_Launch768x1024>$(BDS)\bin\Artwork\iOS\iPad\FM_LaunchImagePortrait_768x1024.png</iPad_Launch768x1024>
+        <DCC_CBuilderOutput>None</DCC_CBuilderOutput>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_iOSSimulator)'!=''">
-        <iPad_AppIcon76>$(BDS)\bin\Artwork\iOS\iPad\FM_ApplicationIcon_76x76.png</iPad_AppIcon76>
-        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <iPad_SpotLight40>$(BDS)\bin\Artwork\iOS\iPad\FM_SpotlightSearchIcon_40x40.png</iPad_SpotLight40>
-        <iPhone_AppIcon60>$(BDS)\bin\Artwork\iOS\iPhone\FM_ApplicationIcon_60x60.png</iPhone_AppIcon60>
-        <iPad_AppIcon152>$(BDS)\bin\Artwork\iOS\iPad\FM_ApplicationIcon_152x152.png</iPad_AppIcon152>
-        <iPhone_Spotlight40>$(BDS)\bin\Artwork\iOS\iPhone\FM_SpotlightSearchIcon_40x40.png</iPhone_Spotlight40>
-        <VerInfo_UIDeviceFamily>iPhoneAndiPad</VerInfo_UIDeviceFamily>
-        <iPad_SpotLight80>$(BDS)\bin\Artwork\iOS\iPad\FM_SpotlightSearchIcon_80x80.png</iPad_SpotLight80>
-        <VerInfo_Keys>CFBundleName=$(MSBuildProjectName);CFBundleDevelopmentRegion=en;CFBundleDisplayName=$(MSBuildProjectName);CFBundleIdentifier=$(MSBuildProjectName);CFBundleInfoDictionaryVersion=7.1;CFBundleVersion=1.0.0.0;CFBundlePackageType=APPL;CFBundleSignature=????;LSRequiresIPhoneOS=true;CFBundleAllowMixedLocalizations=YES;CFBundleExecutable=$(MSBuildProjectName);UIDeviceFamily=iPhone &amp; iPad;CFBundleResourceSpecification=ResourceRules.plist;NSLocationAlwaysUsageDescription=The reason for accessing the location information of the user;NSLocationWhenInUseUsageDescription=The reason for accessing the location information of the user;FMLocalNotificationPermission=false;UIBackgroundModes=</VerInfo_Keys>
-        <iPhone_Spotlight80>$(BDS)\bin\Artwork\iOS\iPhone\FM_SpotlightSearchIcon_80x80.png</iPhone_Spotlight80>
-        <iPad_Launch1024x768>$(BDS)\bin\Artwork\iOS\iPad\FM_LaunchImageLandscape_1024x768.png</iPad_Launch1024x768>
-        <iPhone_AppIcon120>$(BDS)\bin\Artwork\iOS\iPhone\FM_ApplicationIcon_120x120.png</iPhone_AppIcon120>
-        <iPad_Launch2048x1536>$(BDS)\bin\Artwork\iOS\iPad\FM_LaunchImageLandscape_2048x1536.png</iPad_Launch2048x1536>
-        <iPad_Launch1536x2048>$(BDS)\bin\Artwork\iOS\iPad\FM_LaunchImagePortrait_1536x2048.png</iPad_Launch1536x2048>
-        <iPad_Launch768x1024>$(BDS)\bin\Artwork\iOS\iPad\FM_LaunchImagePortrait_768x1024.png</iPad_Launch768x1024>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Base_OSX32)'!=''">
-        <DCC_UsePackage>FireDACASADriver;FireDACSqliteDriver;bindcompfmx;DBXSqliteDriver;FireDACPgDriver;FireDACODBCDriver;RESTBackendComponents;fmx;rtl;dbrtl;DbxClientDriver;IndySystem;FireDACCommon;bindcomp;inetdb;tethering;DBXInterBaseDriver;xmlrtl;DbxCommonDriver;IndyProtocols;dbxcds;DBXMySQLDriver;FireDACCommonDriver;bindcompdbx;soaprtl;bindengine;FMXTee;fmxFireDAC;CustomIPTransport;FireDAC;dsnap;IndyIPServer;fmxase;IndyCore;IndyIPCommon;CloudService;FireDACIBDriver;FmxTeeUI;inet;fmxobj;FireDACMySQLDriver;soapmidas;soapserver;inetdbxpress;dsnapxml;fmxdae;RESTComponents;dbexpress;IndyIPClient;$(DCC_UsePackage)</DCC_UsePackage>
-        <UsingDelphiRTL>true</UsingDelphiRTL>
+        <DCC_CBuilderOutput>None</DCC_CBuilderOutput>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
-        <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
+        <DCC_Define>USE_VCL_BITMAP;$(DCC_Define)</DCC_Define>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
-        <DCC_UsePackage>DPFiOSPackagesXE8;FireDACASADriver;FireDACSqliteDriver;frx22;bindcompfmx;frxTee22;DBXSqliteDriver;FireDACPgDriver;FireDACODBCDriver;RESTBackendComponents;fmx;rtl;dbrtl;DbxClientDriver;IndySystem;FireDACCommon;bindcomp;inetdb;tethering;TeeDB;DBXInterBaseDriver;Tee;vclFireDAC;xmlrtl;svnui;frxe22;DbxCommonDriver;vclimg;DUnitXRuntime;IndyProtocols;dbxcds;DBXMySQLDriver;FireDACCommonDriver;appanalytics;bindcompdbx;soaprtl;bindengine;vclactnband;vcldb;vcldsnap;bindcompvcl;FMXTee;TeeUI;vclie;fmxFireDAC;FireDACADSDriver;vcltouch;frxDB22;CustomIPTransport;vclribbon;VclSmp;FireDAC;dsnap;IndyIPServer;VCLRESTComponents;fmxase;vcl;IndyCore;IndyIPCommon;CloudService;CodeSiteExpressPkg;dsnapcon;FireDACIBDriver;FmxTeeUI;inet;fmxobj;FireDACMySQLDriver;soapmidas;vclx;soapserver;inetdbxpress;svn;dsnapxml;fmxdae;RESTComponents;FireDACMSAccDriver;dbexpress;adortl;IndyIPClient;$(DCC_UsePackage)</DCC_UsePackage>
+        <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win64)'!=''">
+        <DCC_Define>USE_VCL_BITMAP;$(DCC_Define)</DCC_Define>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;$(DCC_Namespace)</DCC_Namespace>
-        <DCC_UsePackage>FireDACASADriver;FireDACSqliteDriver;bindcompfmx;DBXSqliteDriver;FireDACPgDriver;FireDACODBCDriver;RESTBackendComponents;fmx;rtl;dbrtl;DbxClientDriver;IndySystem;FireDACCommon;bindcomp;inetdb;tethering;TeeDB;DBXInterBaseDriver;Tee;vclFireDAC;xmlrtl;DbxCommonDriver;vclimg;IndyProtocols;dbxcds;DBXMySQLDriver;FireDACCommonDriver;appanalytics;bindcompdbx;soaprtl;bindengine;vclactnband;vcldb;vcldsnap;bindcompvcl;FMXTee;TeeUI;vclie;fmxFireDAC;FireDACADSDriver;vcltouch;CustomIPTransport;vclribbon;VclSmp;FireDAC;dsnap;IndyIPServer;VCLRESTComponents;fmxase;vcl;IndyCore;IndyIPCommon;CloudService;dsnapcon;FireDACIBDriver;FmxTeeUI;inet;fmxobj;FireDACMySQLDriver;soapmidas;vclx;soapserver;inetdbxpress;dsnapxml;fmxdae;RESTComponents;FireDACMSAccDriver;dbexpress;adortl;IndyIPClient;$(DCC_UsePackage)</DCC_UsePackage>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
+        <BCC_SourceDebuggingOn>true</BCC_SourceDebuggingOn>
+        <BCC_DebugLineNumbers>true</BCC_DebugLineNumbers>
+        <DCC_MapFile>3</DCC_MapFile>
+        <ILINK_FullDebugInfo>true</ILINK_FullDebugInfo>
+        <DCC_Inlining>off</DCC_Inlining>
         <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
         <DCC_DebugDCUs>true</DCC_DebugDCUs>
         <DCC_Optimize>false</DCC_Optimize>
         <DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
         <DCC_DebugInfoInExe>true</DCC_DebugInfoInExe>
-        <DCC_RemoteDebug>true</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
-        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
-        <DCC_MapFile>3</DCC_MapFile>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <Manifest_File>None</Manifest_File>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <DCC_Description>ZXIng for Delphi barcode scanning library (https://github.com/csm101/ZXing.Delphi)</DCC_Description>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
@@ -206,16 +153,21 @@
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <Manifest_File>(None)</Manifest_File>
-        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="Test.pas"/>
-        <DCCReference Include="..\Lib\Classes\1D Barcodes\ZXing.OneD.Code93Reader.pas"/>
+        <DCCReference Include="rtl.dcp"/>
+        <DCCReference Include="vcl.dcp"/>
+        <DCCReference Include="..\Lib\Classes\ZXing.ScanManager.pas"/>
         <DCCReference Include="..\Lib\Classes\1D Barcodes\ZXing.OneD.Code128Reader.pas"/>
+        <DCCReference Include="..\Lib\Classes\1D Barcodes\ZXing.OneD.Code93Reader.pas"/>
         <DCCReference Include="..\Lib\Classes\1D Barcodes\ZXing.OneD.EAN13Reader.pas"/>
         <DCCReference Include="..\Lib\Classes\1D Barcodes\ZXing.OneD.EANManufacturerOrgSupport.pas"/>
         <DCCReference Include="..\Lib\Classes\1D Barcodes\ZXing.OneD.ITFReader.pas"/>
@@ -224,8 +176,14 @@
         <DCCReference Include="..\Lib\Classes\1D Barcodes\ZXing.OneD.UPCEANExtension5Support.pas"/>
         <DCCReference Include="..\Lib\Classes\1D Barcodes\ZXing.OneD.UPCEANExtensionSupport.pas"/>
         <DCCReference Include="..\Lib\Classes\1D Barcodes\ZXing.OneD.UPCEANReader.pas"/>
-        <DCCReference Include="..\Lib\Classes\2D Barcodes\ZXing.QrCode.QRCodeReader.pas"/>
         <DCCReference Include="..\Lib\Classes\2D Barcodes\ZXing.Datamatrix.DataMatrixReader.pas"/>
+        <DCCReference Include="..\Lib\Classes\2D Barcodes\ZXing.QrCode.QRCodeReader.pas"/>
+        <DCCReference Include="..\Lib\Classes\2D Barcodes\Decoder\ZXing.Datamatrix.Internal.BitMatrixParser.pas"/>
+        <DCCReference Include="..\Lib\Classes\2D Barcodes\Decoder\ZXing.Datamatrix.Internal.DataBlock.pas"/>
+        <DCCReference Include="..\Lib\Classes\2D Barcodes\Decoder\ZXing.Datamatrix.Internal.DecodedBitStreamParser.pas"/>
+        <DCCReference Include="..\Lib\Classes\2D Barcodes\Decoder\ZXing.Datamatrix.Internal.Decoder.pas"/>
+        <DCCReference Include="..\Lib\Classes\2D Barcodes\Decoder\ZXing.Datamatrix.Internal.Version.pas"/>
+        <DCCReference Include="..\Lib\Classes\2D Barcodes\Decoder\ZXing.QrCode.Internal.BitMatrixParser.pas"/>
         <DCCReference Include="..\Lib\Classes\2D Barcodes\Decoder\ZXing.QrCode.Internal.DataBlock.pas"/>
         <DCCReference Include="..\Lib\Classes\2D Barcodes\Decoder\ZXing.QrCode.Internal.DataMask.pas"/>
         <DCCReference Include="..\Lib\Classes\2D Barcodes\Decoder\ZXing.QrCode.Internal.DecodedBitStreamParser.pas"/>
@@ -235,57 +193,50 @@
         <DCCReference Include="..\Lib\Classes\2D Barcodes\Decoder\ZXing.QrCode.Internal.Mode.pas"/>
         <DCCReference Include="..\Lib\Classes\2D Barcodes\Decoder\ZXing.QrCode.Internal.QRCodeDecoderMetaData.pas"/>
         <DCCReference Include="..\Lib\Classes\2D Barcodes\Decoder\ZXing.QrCode.Internal.Version.pas"/>
-        <DCCReference Include="..\Lib\Classes\2D Barcodes\Decoder\ZXing.Datamatrix.Internal.BitMatrixParser.pas"/>
-        <DCCReference Include="..\Lib\Classes\2D Barcodes\Decoder\ZXing.Datamatrix.Internal.DataBlock.pas"/>
-        <DCCReference Include="..\Lib\Classes\2D Barcodes\Decoder\ZXing.Datamatrix.Internal.DecodedBitStreamParser.pas"/>
-        <DCCReference Include="..\Lib\Classes\2D Barcodes\Decoder\ZXing.Datamatrix.Internal.Decoder.pas"/>
-        <DCCReference Include="..\Lib\Classes\2D Barcodes\Decoder\ZXing.Datamatrix.Internal.Version.pas"/>
-        <DCCReference Include="..\Lib\Classes\2D Barcodes\Decoder\ZXing.QrCode.Internal.BitMatrixParser.pas"/>
+        <DCCReference Include="..\Lib\Classes\2D Barcodes\Detector\ZXing.Datamatrix.Internal.Detector.pas"/>
         <DCCReference Include="..\Lib\Classes\2D Barcodes\Detector\ZXing.QrCode.Internal.AlignmentPattern.pas"/>
         <DCCReference Include="..\Lib\Classes\2D Barcodes\Detector\ZXing.QrCode.Internal.AlignmentPatternFinder.pas"/>
+        <DCCReference Include="..\Lib\Classes\2D Barcodes\Detector\ZXing.QrCode.Internal.AlignmentPatternImplementation.pas"/>
         <DCCReference Include="..\Lib\Classes\2D Barcodes\Detector\ZXing.QrCode.Internal.Detector.pas"/>
         <DCCReference Include="..\Lib\Classes\2D Barcodes\Detector\ZXing.QrCode.Internal.FinderPattern.pas"/>
         <DCCReference Include="..\Lib\Classes\2D Barcodes\Detector\ZXing.QrCode.Internal.FinderPatternFinder.pas"/>
+        <DCCReference Include="..\Lib\Classes\2D Barcodes\Detector\ZXing.QrCode.Internal.FinderPatternImplementation.pas"/>
         <DCCReference Include="..\Lib\Classes\2D Barcodes\Detector\ZXing.QrCode.Internal.FinderPatternInfo.pas"/>
-        <DCCReference Include="..\Lib\Classes\2D Barcodes\Detector\ZXing.Datamatrix.Internal.Detector.pas"/>
-        <DCCReference Include="..\Lib\Classes\Common\ZXing.DecoderResult.pas"/>
-        <DCCReference Include="..\Lib\Classes\Common\ZXing.DefaultGridSampler.pas"/>
-        <DCCReference Include="..\Lib\Classes\Common\ZXing.Helpers.pas"/>
-        <DCCReference Include="..\Lib\Classes\Common\ZXing.MultiFormatReader.pas"/>
-        <DCCReference Include="..\Lib\Classes\Common\ZXing.ResultMetadataType.pas"/>
-        <DCCReference Include="..\Lib\Classes\Common\ZXing.StringUtils.pas"/>
         <DCCReference Include="..\Lib\Classes\Common\ZXing.BarcodeFormat.pas"/>
+        <DCCReference Include="..\Lib\Classes\Common\ZXing.BitSource.pas"/>
+        <DCCReference Include="..\Lib\Classes\Common\ZXIng.ByteSegments.pas"/>
+        <DCCReference Include="..\Lib\Classes\Common\ZXing.CharacterSetECI.pas"/>
         <DCCReference Include="..\Lib\Classes\Common\ZXing.Common.BitArray.pas"/>
+        <DCCReference Include="..\Lib\Classes\Common\ZXing.Common.BitArrayImplementation.pas"/>
         <DCCReference Include="..\Lib\Classes\Common\ZXing.Common.BitMatrix.pas"/>
         <DCCReference Include="..\Lib\Classes\Common\ZXing.Common.DetectorResult.pas"/>
         <DCCReference Include="..\Lib\Classes\Common\ZXing.Common.GridSampler.pas"/>
         <DCCReference Include="..\Lib\Classes\Common\ZXing.Common.PerspectiveTransform.pas"/>
+        <DCCReference Include="..\Lib\Classes\Common\ZXing.DecodeHintType.pas"/>
+        <DCCReference Include="..\Lib\Classes\Common\ZXing.DecoderResult.pas"/>
+        <DCCReference Include="..\Lib\Classes\Common\ZXing.DefaultGridSampler.pas"/>
         <DCCReference Include="..\Lib\Classes\Common\ZXing.EncodeHintType.pas"/>
+        <DCCReference Include="..\Lib\Classes\Common\ZXing.Helpers.pas"/>
+        <DCCReference Include="..\Lib\Classes\Common\ZXing.MultiFormatReader.pas"/>
         <DCCReference Include="..\Lib\Classes\Common\ZXing.Reader.pas"/>
         <DCCReference Include="..\Lib\Classes\Common\ZXing.ReadResult.pas"/>
+        <DCCReference Include="..\Lib\Classes\Common\ZXing.ResultMetadataType.pas"/>
         <DCCReference Include="..\Lib\Classes\Common\ZXing.ResultPoint.pas"/>
+        <DCCReference Include="..\Lib\Classes\Common\ZXing.ResultPointImplementation.pas"/>
+        <DCCReference Include="..\Lib\Classes\Common\ZXing.StringUtils.pas"/>
         <DCCReference Include="..\Lib\Classes\Common\Detector\ZXing.Common.Detector.MathUtils.pas"/>
         <DCCReference Include="..\Lib\Classes\Common\Detector\ZXing.Common.Detector.WhiteRectangleDetector.pas"/>
         <DCCReference Include="..\Lib\Classes\Common\ReedSolomon\ZXing.Common.ReedSolomon.GenericGF.pas"/>
         <DCCReference Include="..\Lib\Classes\Common\ReedSolomon\ZXing.Common.ReedSolomon.ReedSolomonDecoder.pas"/>
-        <DCCReference Include="..\Lib\Classes\Common\ZXing.BitSource.pas"/>
-        <DCCReference Include="..\Lib\Classes\Common\ZXing.CharacterSetECI.pas"/>
-        <DCCReference Include="..\Lib\Classes\Common\ZXing.DecodeHintType.pas"/>
+        <DCCReference Include="..\Lib\Classes\Filtering\ZXing.BaseLuminanceSource.pas"/>
         <DCCReference Include="..\Lib\Classes\Filtering\ZXing.Binarizer.pas"/>
         <DCCReference Include="..\Lib\Classes\Filtering\ZXing.BinaryBitmap.pas"/>
         <DCCReference Include="..\Lib\Classes\Filtering\ZXing.GlobalHistogramBinarizer.pas"/>
         <DCCReference Include="..\Lib\Classes\Filtering\ZXing.HybridBinarizer.pas"/>
-        <DCCReference Include="..\Lib\Classes\Filtering\ZXing.BaseLuminanceSource.pas"/>
         <DCCReference Include="..\Lib\Classes\Filtering\ZXing.InvertedLuminanceSource.pas"/>
         <DCCReference Include="..\Lib\Classes\Filtering\ZXing.LuminanceSource.pas"/>
         <DCCReference Include="..\Lib\Classes\Filtering\ZXing.PlanarYUVLuminanceSource.pas"/>
         <DCCReference Include="..\Lib\Classes\Filtering\ZXing.RGBLuminanceSource.pas"/>
-        <DCCReference Include="..\Lib\Classes\ZXing.ScanManager.pas"/>
-        <DCCReference Include="..\Lib\Classes\Common\ZXing.Common.BitArrayImplementation.pas"/>
-        <DCCReference Include="..\Lib\Classes\Common\ZXing.ResultPointImplementation.pas"/>
-        <DCCReference Include="..\Lib\Classes\2D Barcodes\Detector\ZXing.QrCode.Internal.AlignmentPatternImplementation.pas"/>
-        <DCCReference Include="..\Lib\Classes\2D Barcodes\Detector\ZXing.QrCode.Internal.FinderPatternImplementation.pas"/>
-        <DCCReference Include="..\Lib\Classes\Common\ZXIng.ByteSegments.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -300,11 +251,11 @@
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Delphi.Personality.12</Borland.Personality>
-        <Borland.ProjectType>Console</Borland.ProjectType>
+        <Borland.ProjectType>Package</Borland.ProjectType>
         <BorlandProject>
             <Delphi.Personality>
                 <Source>
-                    <Source Name="MainSource">dUnitXTest.dpr</Source>
+                    <Source Name="MainSource">ZXingXE8.dpk</Source>
                 </Source>
                 <Excluded_Packages>
                     <Excluded_Packages Name="C:\Users\Public\Documents\Embarcadero\Studio\16.0\Bpl\libVerificheIspettiveXE8.bpl">(untitled)</Excluded_Packages>
@@ -324,42 +275,14 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="..\Lib\Classes\__recovery" Configuration="Debug" Class="ProjectFile">
-                    <Platform Name="Win64">
-                        <RemoteDir>.\</RemoteDir>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\iossim32\libcgunwind.1.0.dylib" Class="DependencyModule">
-                    <Platform Name="iOSSimulator">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\osx32\libcgsqlite3.dylib" Class="DependencyModule">
-                    <Platform Name="OSX32">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib" Class="DependencyModule">
                     <Platform Name="OSX32">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="Win64\Debug\dUnitXTest.exe" Configuration="Debug" Class="ProjectOutput">
+                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\16.0\Bpl\Win64\ZXingXE8.bpl" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win64">
-                        <RemoteName>dUnitXTest.exe</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="..\Lib\Classes\__history" Configuration="Debug" Class="ProjectFile">
-                    <Platform Name="Win64">
-                        <RemoteDir>.\</RemoteDir>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Win32\Debug\dUnitXTest.exe" Configuration="Debug" Class="ProjectOutput">
-                    <Platform Name="Win32">
-                        <RemoteName>dUnitXTest.exe</RemoteName>
+                        <RemoteName>ZXingXE8.bpl</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -368,34 +291,6 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployClass Name="Android_SplashImage470">
-                    <Platform Name="Android">
-                        <RemoteDir>res\drawable-normal</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
-                <DeployClass Name="ProjectOSXInfoPList"/>
-                <DeployClass Name="iPad_Launch2048">
-                    <Platform Name="iOSDevice64">
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="iOSSimulator">
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="iOSDevice32">
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
-                <DeployClass Name="ProjectiOSDeviceDebug">
-                    <Platform Name="iOSDevice64">
-                        <RemoteDir>..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="iOSDevice32">
-                        <RemoteDir>..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
                 <DeployClass Required="true" Name="DependencyPackage">
                     <Platform Name="iOSDevice64">
                         <Operation>1</Operation>
@@ -418,9 +313,41 @@
                         <Extensions>.dylib</Extensions>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="AndroidLibnativeMipsFile">
+                <DeployClass Name="DependencyModule">
+                    <Platform Name="OSX32">
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                        <Extensions>.dll;.bpl</Extensions>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="iPad_Launch2048">
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectOSXInfoPList"/>
+                <DeployClass Name="ProjectiOSDeviceDebug">
+                    <Platform Name="iOSDevice64">
+                        <RemoteDir>..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
+                        <RemoteDir>..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_SplashImage470">
                     <Platform Name="Android">
-                        <RemoteDir>library\lib\mips</RemoteDir>
+                        <RemoteDir>res\drawable-normal</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -430,13 +357,6 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="AndroidGDBServer">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
-                <DeployClass Name="ProjectOSXEntitlements"/>
                 <DeployClass Name="ProjectiOSResource">
                     <Platform Name="iOSDevice64">
                         <Operation>1</Operation>
@@ -445,6 +365,13 @@
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="iOSDevice32">
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="ProjectOSXEntitlements"/>
+                <DeployClass Name="AndroidGDBServer">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -471,12 +398,6 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="Android_LauncherIcon144">
-                    <Platform Name="Android">
-                        <RemoteDir>res\drawable-xxhdpi</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
                 <DeployClass Name="iPhone_Launch320">
                     <Platform Name="iOSDevice64">
                         <Operation>1</Operation>
@@ -488,14 +409,16 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="DependencyModule">
-                    <Platform Name="OSX32">
+                <DeployClass Name="Android_LauncherIcon144">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-xxhdpi</RemoteDir>
                         <Operation>1</Operation>
-                        <Extensions>.dylib</Extensions>
                     </Platform>
-                    <Platform Name="Win32">
-                        <Operation>0</Operation>
-                        <Extensions>.dll;.bpl</Extensions>
+                </DeployClass>
+                <DeployClass Name="AndroidLibnativeMipsFile">
+                    <Platform Name="Android">
+                        <RemoteDir>library\lib\mips</RemoteDir>
+                        <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="AndroidSplashImageDef">
@@ -504,21 +427,21 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="DependencyFramework">
-                    <Platform Name="OSX32">
-                        <Operation>1</Operation>
-                        <Extensions>.framework</Extensions>
-                    </Platform>
-                    <Platform Name="Win32">
-                        <Operation>0</Operation>
-                    </Platform>
-                </DeployClass>
                 <DeployClass Name="DebugSymbols">
                     <Platform Name="OSX32">
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="Win32">
+                        <Operation>0</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="DependencyFramework">
+                    <Platform Name="OSX32">
+                        <Operation>1</Operation>
+                        <Extensions>.framework</Extensions>
                     </Platform>
                     <Platform Name="Win32">
                         <Operation>0</Operation>
@@ -558,25 +481,19 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="AndroidServiceOutput">
-                    <Platform Name="Android">
-                        <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
                 <DeployClass Name="Android_DefaultAppIcon">
                     <Platform Name="Android">
                         <RemoteDir>res\drawable</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="ProjectiOSDeviceResourceRules"/>
                 <DeployClass Name="ProjectOSXResource">
                     <Platform Name="OSX32">
                         <RemoteDir>Contents\Resources</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
+                <DeployClass Name="ProjectiOSDeviceResourceRules"/>
                 <DeployClass Name="iPad_Launch768">
                     <Platform Name="iOSDevice64">
                         <Operation>1</Operation>
@@ -621,17 +538,6 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="iPhone_Launch640x1136">
-                    <Platform Name="iOSDevice64">
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="iOSSimulator">
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="iOSDevice32">
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
                 <DeployClass Name="File">
                     <Platform Name="Android">
                         <Operation>0</Operation>
@@ -652,15 +558,26 @@
                         <Operation>0</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="AndroidSplashStyles">
-                    <Platform Name="Android">
-                        <RemoteDir>res\values</RemoteDir>
+                <DeployClass Name="iPhone_Launch640x1136">
+                    <Platform Name="iOSDevice64">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSSimulator">
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="iOSDevice32">
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
                 <DeployClass Name="Android_LauncherIcon36">
                     <Platform Name="Android">
                         <RemoteDir>res\drawable-ldpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="AndroidSplashStyles">
+                    <Platform Name="Android">
+                        <RemoteDir>res\values</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -675,15 +592,15 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <DeployClass Name="Android_LauncherIcon72">
-                    <Platform Name="Android">
-                        <RemoteDir>res\drawable-hdpi</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                </DeployClass>
                 <DeployClass Name="Android_LauncherIcon48">
                     <Platform Name="Android">
                         <RemoteDir>res\drawable-mdpi</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                </DeployClass>
+                <DeployClass Name="Android_LauncherIcon72">
+                    <Platform Name="Android">
+                        <RemoteDir>res\drawable-hdpi</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -692,13 +609,12 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="Android" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="Win32" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>
-                <ProjectRoot Platform="Linux64" Name="$(PROJECTNAME)"/>
-                <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="OSX32" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>
             </Deployment>
             <Platforms>
@@ -710,10 +626,6 @@
                 <Platform value="Win32">True</Platform>
                 <Platform value="Win64">True</Platform>
             </Platforms>
-            <ModelSupport>False</ModelSupport>
-            <UnitTesting>
-                <TestProjectName>C:\Dev\Delphi\ZXing\UnitTest\Test\dUnitXTestTests.dproj</TestProjectName>
-            </UnitTesting>
         </BorlandProject>
         <ProjectFileVersion>12</ProjectFileVersion>
     </ProjectExtensions>

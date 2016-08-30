@@ -25,7 +25,7 @@ type
     function GetBit(i: Integer): Boolean;
     procedure SetBit(i: Integer; Value: Boolean);
     function makeArray(Size: Integer): TArray<Integer>;
-    procedure BitArray(bits: TArray<Integer>; size: Integer);
+ //   procedure BitArray(bits: TArray<Integer>; size: Integer); never used
     procedure ensureCapacity(size: Integer);
 
 
@@ -77,11 +77,11 @@ begin
 end;
 
 // For testing only
-procedure TBitArrayImplementation.BitArray(bits: TArray<Integer>; size: Integer);
-begin
-  Fbits := bits;
-  Fsize := size;
-end;
+//procedure TBitArrayImplementation.BitArray(bits: TArray<Integer>; size: Integer);
+//begin
+//  Fbits := bits;
+//  Fsize := size;
+//end;
 
 procedure TBitArrayImplementation.ensureCapacity(size: Integer);
 var

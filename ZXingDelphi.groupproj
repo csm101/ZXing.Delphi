@@ -15,6 +15,9 @@
         <Projects Include="MemLeakTest\Leaktest.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="Packages\ZXingXE8.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -59,14 +62,23 @@
     <Target Name="Leaktest:Make">
         <MSBuild Projects="MemLeakTest\Leaktest.dproj" Targets="Make"/>
     </Target>
+    <Target Name="ZXingXE8">
+        <MSBuild Projects="Packages\ZXingXE8.dproj"/>
+    </Target>
+    <Target Name="ZXingXE8:Clean">
+        <MSBuild Projects="Packages\ZXingXE8.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ZXingXE8:Make">
+        <MSBuild Projects="Packages\ZXingXE8.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="dUnitXTest;aTestApp;vclTestApp;Leaktest"/>
+        <CallTarget Targets="dUnitXTest;aTestApp;vclTestApp;Leaktest;ZXingXE8"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="dUnitXTest:Clean;aTestApp:Clean;vclTestApp:Clean;Leaktest:Clean"/>
+        <CallTarget Targets="dUnitXTest:Clean;aTestApp:Clean;vclTestApp:Clean;Leaktest:Clean;ZXingXE8:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="dUnitXTest:Make;aTestApp:Make;vclTestApp:Make;Leaktest:Make"/>
+        <CallTarget Targets="dUnitXTest:Make;aTestApp:Make;vclTestApp:Make;Leaktest:Make;ZXingXE8:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>
