@@ -212,7 +212,7 @@ begin
   // than waste time trying to decode the image, and risk false positives.
   // TODO: It might be worth comparing the brightest and darkest pixels seen, rather than the
   // two peaks, to determine the contrast.
-  if ((secondPeak - firstPeak) <= (TMathUtils.Asr(numBuckets, 4))) then
+  if ((secondPeak - firstPeak) <= (TMathUtils.Asr64(numBuckets, 4))) then
   begin
     result := false;
     exit;

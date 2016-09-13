@@ -87,7 +87,7 @@ procedure TBitArrayImplementation.ensureCapacity(size: Integer);
 var
   newBits : TArray<Integer>;
 begin
-  if (size > TMathUtils.Asr(Length(Fbits), 5)) then
+  if (size > TMathUtils.Asr64(Length(Fbits), 5)) then
   begin
     newBits := makeArray(size);
     Move(Fbits[0], newBits[0], Length(Fbits));
@@ -204,17 +204,6 @@ begin
   Result := ar;
 end;
 
-function TBitArrayImplementation.numberOfTrailingZeros(num: Integer): Integer;
-var
-  index: Integer;
-begin
-  index := (-num and num) mod 37;
-  if (index < 0) then
-  begin
-    index := index * -1;
-  end;
-  Result := _lookup[index];
-end;
 
 procedure TBitArrayImplementation.Reverse;
 var
@@ -230,11 +219,11 @@ begin
   for i := 0 to oldBitsLen - 1 do
   begin
     x := Fbits[i];
-    x := (TMathUtils.Asr(x, 1) and $55555555) or ((x and $55555555) shl 1);
-    x := (TMathUtils.Asr(x, 2) and $33333333) or ((x and $33333333) shl 2);
-    x := (TMathUtils.Asr(x, 4) and $0F0F0F0F) or ((x and $0F0F0F0F) shl 4);
-    x := (TMathUtils.Asr(x, 8) and $00FF00FF) or ((x and $00FF00FF) shl 8);
-    x := (TMathUtils.Asr(x, 16) and $0000FFFF) or ((x and $0000FFFF) shl 16);
+    x := (TMathUtils.Asr64(x, 1) and $55555555) or ((x and $55555555) shl 1);
+    x := (TMathUtils.Asr64(x, 2) and $33333333) or ((x and $33333333) shl 2);
+    x := (TMathUtils.Asr64(x, 4) and $0F0F0F0F) or ((x and $0F0F0F0F) shl 4);
+    x := (TMathUtils.Asr64(x, 8) and $00FF00FF) or ((x and $00FF00FF) shl 8);
+    x := (TMathUtils.Asr64(x, 16) and $0000FFFF) or ((x and $0000FFFF) shl 16);
     newBits[len - i] := integer(x) ;
   end;
   // now correct the int's if the bit size isn't a multiple of 32
@@ -247,13 +236,13 @@ begin
       mask := (mask shl 1) or 1;
     end;
 
-    currentInt := TMathUtils.Asr(newBits[0], leftOffset) and mask;
+    currentInt := Integer(TMathUtils.Asr64(newBits[0], leftOffset) and mask);
     for i := 1 to oldBitsLen - 1 do
     begin
       nextInt := newBits[i];
       currentInt := currentInt or (nextInt shl (32 - leftOffset));
       newBits[i - 1] := currentInt;
-      currentInt := TMathUtils.Asr(nextInt, leftOffset) and mask;
+      currentInt := integer(TMathUtils.Asr64(nextInt, leftOffset) and mask);
     end;
     newBits[oldBitsLen - 1] := currentInt;
   end;
@@ -473,6 +462,19 @@ end;
 function NewBitArray(const Size: Integer):IBitArray;
 begin
    result :=  TBitArrayImplementation.Create(size);
+end;
+
+{$OVERFLOWCHECKS OFF} // this procedure causes and overflowcheck when computing "-num" if num is the lowest integer that can be stored in an integer variable: its positive value can't be stored in an integer
+function TBitArrayImplementation.numberOfTrailingZeros(num: Integer): Integer;
+var
+  index: Integer;
+begin
+  index := (-num and num) mod 37;
+  if (index < 0) then
+  begin
+     index := index * -1;
+  end;
+  Result := _lookup[index];
 end;
 
 

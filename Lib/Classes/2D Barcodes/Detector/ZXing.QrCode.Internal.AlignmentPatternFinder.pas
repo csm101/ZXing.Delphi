@@ -177,9 +177,9 @@ begin
     // Search from middle outwards
     if ((iGen and 1) = 0)
     then
-       i := middleI + (TMathUtils.Asr(iGen + 1, 1))
+       i := integer( middleI + (TMathUtils.Asr64(iGen + 1, 1)))
     else
-       i := middleI + (-1 * TMathUtils.Asr(iGen + 1, 1));
+       i := integer(middleI + (-1 * TMathUtils.Asr64(iGen + 1, 1)));
 
     stateCount[0] := 0;
     stateCount[1] := 0;

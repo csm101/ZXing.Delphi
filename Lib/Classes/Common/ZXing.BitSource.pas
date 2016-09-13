@@ -68,7 +68,7 @@ begin
       toRead := bitsLeft;
 
     bitsToNotRead := (bitsLeft - toRead);
-    mask := TMathUtils.Asr($FF, ((8 - toRead) and $1F)) shl bitsToNotRead;
+    mask := integer(TMathUtils.Asr64($FF, ((8 - toRead) and $1F)) shl bitsToNotRead);
     Result := TMathUtils.Asr((self.bytes[self.ByteOffset] and mask),
       bitsToNotRead);
 
@@ -95,10 +95,11 @@ begin
     if (numBits > 0) then
     begin
       bitsToNotRead := 8 - numBits;
-      mask := TMathUtils.Asr($FF, bitsToNotRead) shl bitsToNotRead;
+      mask := integer(TMathUtils.Asr64($FF, bitsToNotRead) shl bitsToNotRead);
 
-      Result := (Result shl numBits) or
-        TMathUtils.Asr((bytes[ByteOffset] and mask), bitsToNotRead);
+      Result := integer(
+                 (Result shl numBits) or
+                  TMathUtils.Asr64((bytes[ByteOffset] and mask), bitsToNotRead));
 
       inc(BitOffset, numBits)
     end

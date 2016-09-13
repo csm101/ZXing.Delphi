@@ -95,7 +95,7 @@ var
   offset, v, bits, shift: Integer;
   uBits: LongWord;
 begin
-  offset := y * FrowSize + TMathUtils.Asr(x, 5);
+  offset := integer(y * FrowSize + TMathUtils.Asr64(x, 5));
   try
     bits := Fbits[offset];
     uBits := LongWord(bits);
@@ -114,7 +114,7 @@ var
 begin
   if (value) then
   begin
-    offset := y * FrowSize + TMathUtils.Asr(x, 5);
+    offset := NativeInt( y * FrowSize + TMathUtils.Asr64(x, 5));
     Fbits[offset] := Fbits[offset] or (1 shl (x and $1F));
   end
   else
@@ -246,7 +246,7 @@ begin
   theBits := Fbits[bitsOffset];
   bit := $1F;
 
-  while ((TMathUtils.Asr(theBits, bit) = 0)) do
+  while ((TMathUtils.Asr64(theBits, bit) = 0)) do
   begin
     dec(bit);
   end;
@@ -296,7 +296,7 @@ begin
         if (((x32 * $20) + $1F) > right) then
         begin
           bit := $1F;
-          while ((TMathUtils.Asr(theBits, bit) = 0)) do
+          while ((TMathUtils.Asr64(theBits, bit) = 0)) do
           begin
             dec(bit)
           end;
@@ -436,8 +436,8 @@ begin
     x := left;
     while ((x < right)) do
     begin
-      Fbits[(offset + TMathUtils.Asr(x, 5))] :=
-        (Fbits[(offset + TMathUtils.Asr(x, 5))] or (1 shl x));
+      Fbits[integer(offset + TMathUtils.Asr64(x, 5))] :=
+        (Fbits[integer(offset + TMathUtils.Asr64(x, 5))] or (1 shl x));
       Inc(x)
     end;
     Inc(y)

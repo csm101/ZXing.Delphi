@@ -29,7 +29,11 @@ type
     class function distance(const aX, aY, bX, bY: Double): Single; static;
     class function round(d: Single): Integer; static;
     // class function Asr(x, y: integer): integer; overload; static;
-    class function Asr(Value: Int64; ShiftBits: integer): Int64; static;
+
+    // created two distinct versions of ASR because assigning the result of int64 version to an int variable
+    // without doing an explicit cast to integer often raises a "range check error" if library is compiled with "range checking on"
+    class function Asr64(const Value: Int64; const ShiftBits: integer): Int64; static;
+    class function Asr(const Value: Int64; const ShiftBits: integer): integer; static;
   end;
 
 implementation
@@ -73,11 +77,16 @@ end;
   result := x div (1 shl y);
   end;
 }
-class function TMathUtils.Asr(Value: Int64; ShiftBits: integer): Int64;
+class function TMathUtils.Asr64(const Value: Int64; const ShiftBits: integer): Int64;
 begin
   result := Value shr ShiftBits;
   if (Value and $8000000000000000) > 0 then
     result := result or ($FFFFFFFFFFFFFFFF shl (64 - ShiftBits));
+end;
+
+class function TMathUtils.Asr(const Value: Int64; const ShiftBits: integer): integer;
+begin
+  result := integer(TMathUtils.Asr64(Value,ShiftBits));
 end;
 
 end.
